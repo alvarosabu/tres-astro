@@ -16,8 +16,8 @@ const gl = {
 
 <template>
   <div class="tres-container">
-    <TresCanvas v-bind="gl" window-size>
-    <TresPerspectiveCamera :position="[0,0,20]" :look-at="[0,1,0]" />
+    <TresCanvas v-bind="gl">
+    <TresPerspectiveCamera :position="[5,5,5]" :look-at="[0,1,0]" />
     <OrbitControls />
     <Stars />
     <Suspense>
