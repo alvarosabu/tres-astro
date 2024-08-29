@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TresCanvas } from '@tresjs/core'
 import { BasicShadowMap, SRGBColorSpace, NoToneMapping } from 'three'
-import { OrbitControls, Stars } from '@tresjs/cientos'
+import { Stars, Levioso } from '@tresjs/cientos'
 import Houston from './Houston.vue';
 
 const gl = {
@@ -17,12 +17,15 @@ const gl = {
 <template>
   <div class="tres-container">
     <TresCanvas v-bind="gl">
-    <TresPerspectiveCamera :position="[5,5,5]" :look-at="[0,1,0]" />
-    <OrbitControls />
+    <TresPerspectiveCamera :position="[0,1,7]" />
     <Stars />
-    <Suspense>
-      <Houston />
-    </Suspense>
+    <TresGroup :position="[4, 0, 0]" :rotation="[0, -Math.PI /4, 0]" >
+      <Levioso>
+        <Suspense>
+          <Houston />
+        </Suspense>
+      </Levioso>
+    </TresGroup>
     <TresAmbientLight :intensity="1" />
     <TresDirectionalLight
       :position="[-4, -2, 2]"
@@ -43,7 +46,7 @@ const gl = {
 <style>
 .tres-container {
   width: 100%;
-  height: 300px;
+  height: 400px;
 }
 canvas {
   width: 100%;
